@@ -24,7 +24,7 @@
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      max-width: 420px;
+      max-width: 460px;
       width: 90%;
     }
 
@@ -71,14 +71,14 @@
 
     .options {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
       margin-top: 25px;
     }
 
     .option-card {
       background: rgba(255, 255, 255, 0.25);
-      padding: 18px;
+      padding: 16px;
       border-radius: 15px;
       cursor: pointer;
       font-size: 1.05rem;
@@ -151,20 +151,19 @@
           <div class="option-card" onclick="selectOption('Samgyup 🥩')">Samgyup 🥩</div>
           <div class="option-card" onclick="selectOption('Steak House 🥩🔥')">Steak House 🥩🔥</div>
           <div class="option-card" onclick="selectOption('Fine Dining 🍷✨')">Fine Dining 🍷✨</div>
-          <div class="option-card" onclick="selectOption('Chinese Cuisine 🥟🥢')">Chinese Resto 🥟🥢</div>
-          <div class="option-card" onclick="selectOption('Shabu-shabu 🍲')">Shabu-shabu 🍲</div>
-          <div class="option-card" onclick="selectOption('French Cuisine 🥐')">French Cuisine 🇫🇷🥐</div>
-          <div class="option-card" onclick="selectOption('Italian Cuisine 🍝')">Italian Cuisine 🇮🇹🍝</div>
+          <div class="option-card" onclick="selectOption('Chinese Cuisine 🥟🥢')">Chinese Cuisine 🥟🥢</div>
+          <div class="option-card" onclick="selectOption('Hot pot 🍲')">Hot pot 🍲</div>
+          <div class="option-card" onclick="selectOption('French Cuisine 🥐')">French Cuisine 🥐</div>
+          <div class="option-card" onclick="selectOption('Italian Cuisine 🍝')">Italian Cuisine 🍝</div>
+          <div class="option-card" onclick="selectOption('Japanese Cuisine 🍣')">Japanese Cuisine 🍣</div>
         </div>
       `;
     });
 
     function selectOption(choice) {
       mainCard.innerHTML = `
-        <h1>🥰 Perfect Choice!</h1>
-        <p>You're in for a wonderful day with me, love!</p>
-        <p>We’re going to</p>
-        <h2>${choice}</h2>
+        <h1>🥰Wow! Perfect Choice!</h1>
+        <h2>We're going to have ${choice}</h2>
         <p>Can’t wait for our date 💖🌹</p>
       `;
     }

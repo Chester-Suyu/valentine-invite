@@ -124,7 +124,27 @@
     });
 
     yesBtn.addEventListener("click", () => {
-      document.body.innerHTML = 
+      document.body.innerHTML = `
+      <div style="text-alignment:center; color:white;">
+        <h1> You got yourself in for a wonderful date, love! </h1>
+        <p>See you on Valentine’s Day 🌹</p>
+      </div>
+      `;
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+    
   </script>
 
 </body>

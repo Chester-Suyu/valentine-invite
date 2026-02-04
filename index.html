@@ -24,17 +24,18 @@
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      max-width: 400px;
+      max-width: 420px;
+      width: 90%;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       margin-bottom: 10px;
     }
 
     p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+      font-size: 1.15rem;
+      margin-bottom: 25px;
     }
 
     .buttons {
@@ -68,6 +69,27 @@
       position: relative;
     }
 
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .option-card {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 18px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .option-card:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.08);
+    }
+
     .heart {
       position: absolute;
       color: rgba(255,255,255,0.8);
@@ -89,11 +111,9 @@
 </head>
 <body>
 
-  <div class="card">
+  <div class="card" id="mainCard">
     <h1>💖 Be My Valentine?</h1>
-    <p>
-      I was wondering if you'd like to spend this Valentine’s Day with me 🌹
-    </p>
+    <p>I was wondering if you'd like to spend this Valentine’s Day with me 🌹</p>
 
     <div class="buttons">
       <button id="yesBtn">Yes 💕</button>
@@ -104,33 +124,50 @@
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
+    const mainCard = document.getElementById("mainCard");
 
     let noClickCount = 0;
 
-    noBtn.addEventListener("click", () => {
-      noCLickCount++;
-
-      //Grow the button (max scale = 3)
-      const scale = Math.min(1 + noClickCount * 0.2, 3);
-      noBtn.style.transform = `scale(${scale})`;
-
-      //Move to random position
+    noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
       const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-
       noBtn.style.position = "absolute";
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     });
 
+    noBtn.addEventListener("click", () => {
+      noClickCount++;
+      const scale = Math.min(1 + noClickCount * 0.2, 2.5);
+      noBtn.style.transform = `scale(${scale})`;
+    });
+
     yesBtn.addEventListener("click", () => {
-      document.body.innerHTML = `
-      <div style="text-alignment:center; color:white;">
-        <h1> You got yourself in for a wonderful date, love! </h1>
-        <p>See you on Valentine’s Day 🌹</p>
-      </div>
+      mainCard.innerHTML = `
+        <h1>🍽️ Date Time!</h1>
+        <p>Where should we eat on Valentine’s Day? 💕</p>
+
+        <div class="options">
+          <div class="option-card" onclick="selectOption('Samgyup 🥩')">Samgyup 🥩</div>
+          <div class="option-card" onclick="selectOption('Steak House 🥩🔥')">Steak House 🥩🔥</div>
+          <div class="option-card" onclick="selectOption('Fine Dining 🍷✨')">Fine Dining 🍷✨</div>
+          <div class="option-card" onclick="selectOption('Chinese Cuisine 🥟🥢')">Chinese Resto 🥟🥢</div>
+          <div class="option-card" onclick="selectOption('Shabu-shabu 🍲')">Shabu-shabu 🍲</div>
+          <div class="option-card" onclick="selectOption('French Cuisine 🥐')">French Cuisine 🇫🇷🥐</div>
+          <div class="option-card" onclick="selectOption('Italian Cuisine 🍝')">Italian Cuisine 🇮🇹🍝</div>
+        </div>
       `;
     });
+
+    function selectOption(choice) {
+      mainCard.innerHTML = `
+        <h1>🥰 Perfect Choice!</h1>
+        <p>You're in for a wonderful day with me, love!</p>
+        <p>We’re going to</p>
+        <h2>${choice}</h2>
+        <p>Can’t wait for our date 💖🌹</p>
+      `;
+    }
 
     function createHeart() {
       const heart = document.createElement("div");
@@ -144,9 +181,7 @@
     }
 
     setInterval(createHeart, 300);
-    
   </script>
 
 </body>
 </html>
-
